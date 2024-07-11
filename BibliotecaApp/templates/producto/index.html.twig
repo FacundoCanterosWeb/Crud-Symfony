@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1>Listado de Productos</h1>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Código ID</th>
+                    <th>Título</th>
+                    <th>Autor</th>
+                    <th>ISBN</th>
+                    <th>Categoría</th>
+                    <th>Fecha de Publicación</th>
+                    <th>Cantidad</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for producto in productos %}
+                    <tr>
+                        <td>{{ producto.id }}</td>
+                        <td>{{ producto.CodigoID }}</td>
+                        <td>{{ producto.Titulo }}</td>
+                        <td>{{ producto.autor }}</td>
+                        <td>{{ producto.isbn }}</td>
+                        <td>{{ producto.categoria }}</td>
+                        <td>{{ producto.fechaPublicacion ? producto.fechaPublicacion|date('Y-m-d') : '' }}</td>
+                        <td>{{ producto.cantidad }}</td>
+                        <td>
+                            <a href="{{ path('app_producto_show', {'id': producto.id}) }}" class="btn btn-info btn-sm">Ver</a>
+                            <a href="{{ path('app_producto_edit', {'id': producto.id}) }}" class="btn btn-warning btn-sm">Editar</a>
+                            {{ include('producto/_delete_form.html.twig') }}
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="9">No se encontraron registros</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <a href="{{ path('app_producto_new') }}" class="btn btn-success">Crear Nuevo Producto</a>
+    </div>
+{% endblock %}

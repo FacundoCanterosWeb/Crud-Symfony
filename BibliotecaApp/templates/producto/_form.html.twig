@@ -1,0 +1,18 @@
+{# templates/producto/_form.html.twig #}
+{{ form_start(form) }}
+<div class="row mb-3">
+    <div class="col-md-6">
+        {{ form_row(form.Codigo_ID, { 'attr': {'class': 'form-control'} }) }}
+        {{ form_row(form.Titulo, { 'attr': {'class': 'form-control'} }) }}
+        {{ form_row(form.autor, { 'attr': {'class': 'form-control'} }) }}
+        {{ form_row(form.isbn, { 'attr': {'class': 'form-control'} }) }}
+    </div>
+    <div class="col-md-6">
+        {{ form_row(form.categoria, { 'attr': {'class': 'form-control'} }) }}
+        {{ form_row(form.fecha_publicacion, { 'attr': {'class': 'form-control'} }) }}
+        {{ form_row(form.cantidad, { 'attr': {'class': 'form-control'} }) }}
+    </div>
+</div>
+
+<button type="submit" class="btn btn-primary">{{ button_label|default('Guardar') }}</button>
+{{ form_end(form) }}
